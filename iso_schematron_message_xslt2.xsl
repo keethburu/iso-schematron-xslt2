@@ -1,5 +1,4 @@
-<?xml version="1.0" ?><?xar XSLT?>
-<!-- Implmentation for the Schematron XML Schema Language.
+<?xar XSLT?><!-- Implmentation for the Schematron XML Schema Language.
 	http://www.ascc.net/xml/resource/schematron/schematron.html
  
  Copyright (c) 2000,2001 Rick Jelliffe and Academia Sinica Computing Center, Taiwan
@@ -21,35 +20,24 @@
  misrepresented as being the original software.
 
  3. This notice may not be removed or altered from any source distribution.
--->
-
-<!-- Schematron message -->
-
-<xsl:stylesheet
-   version="2.0"
-   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-   xmlns:axsl="http://www.w3.org/1999/XSL/TransformAlias">
-
-<xsl:import href="iso_schematron_skeleton_for_saxon.xsl"/>
-
-<xsl:template name="process-prolog">
-   <axsl:output method="text" />
-</xsl:template>
+--><!-- Schematron message -->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dgs="http://www.degruyter.com/namespace/schematron-annotation" xmlns:axsl="http://www.w3.org/1999/XSL/TransformAlias" version="2.0">
+    <xsl:import href="iso_schematron_skeleton_for_saxon.xsl"/>
+    <xsl:template name="process-prolog">
+        <axsl:output method="text"/>
+    </xsl:template>
 
 <!-- use default rule for process-root:  copy contens / ignore title -->
 <!-- use default rule for process-pattern: ignore name and see -->
 <!-- use default rule for process-name:  output name -->
 <!-- use default rule for process-assert and process-report:
      call process-message -->
-
-<xsl:template name="process-message">
-   <xsl:param name="pattern" />
-   <xsl:param name="role" />
-   <axsl:message>
-      <xsl:apply-templates mode="text"  
-      /> (<xsl:value-of select="$pattern" />
-      <xsl:if test="$role"> / <xsl:value-of select="$role" />
-      </xsl:if>)</axsl:message>
-</xsl:template>
-
+    <xsl:template name="process-message">
+        <xsl:param name="pattern"/>
+        <xsl:param name="role"/>
+        <axsl:message>
+            <xsl:apply-templates mode="text"/> (<xsl:value-of select="$pattern"/>
+            <xsl:if test="$role"> / <xsl:value-of select="$role"/>
+            </xsl:if>)</axsl:message>
+    </xsl:template>
 </xsl:stylesheet>
